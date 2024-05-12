@@ -12,10 +12,13 @@ import instances from '../api/route';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+
+
+
 const Singleview = ({ params }: { params: { Singleview: string } }) => {
 
-  const [productData, setProductData] = useState(null);
-  const [images, setImages] = useState(null);
+  const [productData, setProductData] = useState<any>();
+  const [images, setImages] = useState([]);
 
   const getData = async () => {
     try {
@@ -28,6 +31,7 @@ const Singleview = ({ params }: { params: { Singleview: string } }) => {
       console.error('Error fetching product data:', error);
     }
   };
+  
 
   useEffect(() => {
     getData();

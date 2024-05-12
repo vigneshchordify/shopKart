@@ -8,10 +8,27 @@ import Loader from '@/components/Loader';
 import instances from './api/route';
 import Footer from '@/components/Footer';
 
+interface Category {
+  name: string;
+
+}
+
+interface Product{
+  id:string;
+  images:string[];
+  title:string;
+  price:string;
+  description:string;
+  category: Category; 
+  
+}
+
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchData, setSearchData] = useState('')
+
+
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -44,7 +61,7 @@ export default function Home() {
 
     fetchMovies();
 
-  }, [searchData]); // Empty dependency array ensures the effect runs only once on component mount
+  }, [searchData]); 
 
   return (
     <main>
@@ -79,7 +96,7 @@ export default function Home() {
                 
                   
                   products.filter(product => product.category.name.includes(searchData)).length > 0 ? (
-                  // If there are filtered products, map over them and render Card components
+                 
                   products.filter(product => product.category.name.includes(searchData)).map(product => (
                     <Card
                       id={product.id}
@@ -91,7 +108,7 @@ export default function Home() {
                   ))
            
               ) : (
-                // If there are no filtered products, display a message
+              
                 <h3>No results found</h3>
               )
             ) : (
