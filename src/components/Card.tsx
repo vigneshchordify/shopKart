@@ -6,7 +6,18 @@ import { log } from 'console';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const Card = ({ title, price, image, id,description}) => {
+
+interface CardProps {
+    id: string;
+    image: string;
+    title: string;
+    price: number;
+    description: string;
+  } 
+  
+
+
+  const Card: React.FC<CardProps> = ({ id, image, title, price, description }) => {
   const router = useRouter();
 
   const handleClick = () => {
