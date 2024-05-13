@@ -8,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import instances from '../api/route';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -22,7 +21,7 @@ const Singleview = ({ params }: { params: { Singleview: string } }) => {
 
   const getData = async () => {
     try {
-      const response = await instances.get(`/products/${params.Singleview}`);
+      const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${params.Singleview}`);
       console.log(response.data);
       setImages(response.data.images)
       console.log(images)

@@ -5,7 +5,6 @@ import axios from 'axios';
 import Navbar from '@/components/Navbar';
 import Card from '@/components/Card';
 import Loader from '@/components/Loader';
-import instances from './api/route';
 import Footer from '@/components/Footer';
 
 interface Category {
@@ -48,7 +47,7 @@ export default function Home() {
         //     'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
         //   }
         // });
-        const response= await instances.get('products')
+        const response= await axios.get('https://api.escuelajs.co/api/v1/products')
         setProducts(response.data); 
         setLoading(false);
         console.log(response.data);
