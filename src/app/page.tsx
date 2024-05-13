@@ -98,6 +98,7 @@ export default function Home() {
                  
                   products.filter(product => product.category.name.includes(searchData)).map(product => (
                     <Card
+                    key={product.id}
                       id={product.id}
                       image={product.images[0]}
                       title={product.title}
